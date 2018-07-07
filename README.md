@@ -1,7 +1,7 @@
 Neighborhood Map (React)
 
 It's a web application, built using the ReactJS, to display Google Map of an area and various points of interests . Users can search about many locations and additional information about a target point is presented from FourSquare APIs.
-This application is Hosted on : https://github.com/AmalAlorf/reactnd-project-myreads-starter
+This application is Hosted on : https://github.com/AmalAlorf/Neighborhood-Map-React
 
 To install and run the application follow the below steps:
 
