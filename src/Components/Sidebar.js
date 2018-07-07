@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 //Search class react Component
 class Search extends Component {
-
     state = {
         markers: []
     };
@@ -11,26 +10,22 @@ class Search extends Component {
             ////////Set marker values
             this.setState({ markers: this.props.defultMarker });
         }
-        ///////////////////////////////////////////////
         ///Search Function
     search= (event) =>{
-        const query = event.target.value.toLowerCase();
+        const targetMarker = event.target.value.toLowerCase();
         const markers = this.props.defultMarker;
-        //Depend on the search result
+        //Depending on the search result
         const newMarkers = [];
         markers.forEach(function(marker) {
-            ///loop for the markers set the new result and get target search
-            if (marker.title.toLowerCase().indexOf(query.toLowerCase()) >= 0) {
-            //check for the first letter
-          //  if (marker.title.toLowerCase() === event.target.value.toLowerCase()) {
-                // if the lettesr are match then push the new markers to the new list
+            ///loop for the markers set the new result and push target search
+            if (marker.title.toLowerCase().indexOf(targetMarker.toLowerCase()) >= 0) {
                 newMarkers.push(marker);
             }
         });
         //Set the value of marker to the new search result
         this.setState({ markers: newMarkers });
     }
-/////////////////
+///////searchBar open function //////////
     open = () => {
         const searchBar = document.querySelector('.sideBar');
         if (searchBar.style.display === 'none')
@@ -38,8 +33,6 @@ class Search extends Component {
         else
         searchBar.style.display = 'none';
     }
-    // add the icon instead of lines
-
     render() {
            return (
                <div>
