@@ -19,8 +19,12 @@ class Search extends Component {
         markers.forEach(function(marker) {
             ///loop for the markers set the new result and push target search
             if (marker.title.toLowerCase().indexOf(targetMarker.toLowerCase()) >= 0) {
+              marker.setVisible(true);
                 newMarkers.push(marker);
             }
+            else {
+              marker.setVisible(false);
+          }
         });
         //Set the value of marker to the new search result
         this.setState({ markers: newMarkers });
@@ -36,7 +40,7 @@ class Search extends Component {
     render() {
            return (
                <div>
-                   <div className="searchBarIcon" onClick={this.open}>
+                   <div  className="searchBarIcon" onClick={this.open} tabIndex="0" >
                    </div>
                    <div className="sideBar">
                        <div className="form" role="form">
@@ -49,7 +53,7 @@ class Search extends Component {
                            { this.state.markers.map((marker, i) =>
                                <li key={i}>
                                    <a href="#" onClick={this.props.openInfo.bind(this, marker)}
-                                    role="link">{marker.title}</a>
+                                    tabIndex="0" role="link">{marker.title}</a>
                                </li>
                            )}
                        </ul>

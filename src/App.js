@@ -49,6 +49,10 @@ class App extends Component {
 
 ////////function to Create the map by calling google api///////////
 componentDidMount() {
+  //gm_authFaliure function should be able to catch the errors
+  window.gm_authFailure = function() {
+   alert('Google maps failed to load!');
+}
 window.initializationMap = this.initializationMap;
 const googleMapURL='https://maps.googleapis.com/maps/api/js?key=AIzaSyC36rhwahGvbFMy01utzj0aVDCcZ6SbB9c&libraries=places&callback=initializationMap';
 //create the script element for google map link
@@ -123,7 +127,12 @@ markerInfo(url) {
     let markerInfo = this.state.info;
     fetch(url)
         .then(function (resp) {
+          if (!resp.ok) {
+                const err = "Can't load data...";
+                this.state.info.setContent(err);
+               }
             resp.json().then(function (data) {
+
               //Gives the full details about a venue including location, tips, and categories.
                 let placeInfo = data.response.venues[0];
                 let info =

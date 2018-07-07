@@ -25,7 +25,7 @@ header h1 {
 
 .searchBarIcon {
   width: 45px;
-  height: 60px;
+  height: 53px;
   float: left;
   background-image: url("bar.png");
    background-repeat:no-repeat;
@@ -59,6 +59,10 @@ header h1 {
 }
 input:focus {
     background-color: #fdf6bd;
+}
+.searchBarIcon:focus
+{
+    border: 2px solid #fdf6bd;
 }
 
  li {
