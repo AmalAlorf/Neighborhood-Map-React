@@ -14,16 +14,21 @@ class Search extends Component {
     search= (event) =>{
         const targetMarker = event.target.value.toLowerCase();
         const markers = this.props.defultMarker;
+        let loadingError=this.props.loadingError;
         //Depending on the search result
         const newMarkers = [];
         markers.forEach(function(marker) {
             ///loop for the markers set the new result and push target search
             if (marker.title.toLowerCase().indexOf(targetMarker.toLowerCase()) >= 0) {
+              if(loadingError===false){
               marker.setVisible(true);
+            }
                 newMarkers.push(marker);
             }
             else {
+              if(loadingError===false){
               marker.setVisible(false);
+            }
           }
         });
         //Set the value of marker to the new search result
@@ -40,7 +45,7 @@ class Search extends Component {
     render() {
            return (
                <div>
-                   <div  className="searchBarIcon" onClick={this.open} tabIndex="0" >
+                   <div  className="searchBarIcon" role="button" tabIndex="0" onClick={this.open}  >
                    </div>
                    <div className="sideBar">
                        <div className="form" role="form">
